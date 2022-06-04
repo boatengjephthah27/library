@@ -8,25 +8,22 @@ def create_table():
     connect.commit()
     connect.close()
 
-
 create_table()
 
 
-def add(book, quantity, price):
+def add(title, author, year, page):
     connect = sqlite3.connect("library.db")
     cur = connect.cursor()
-    cur.execute("INSERT INTO bookshelf VALUES (NULL,?,?,?,?)".format(book, quantity, price))
+    cur.execute("INSERT INTO bookshelf VALUES (NULL,?,?,?,?)", (title, author, year, page))
     connect.commit()
     connect.close()
 
-
-def update(quantity, price, item):
+def update(id, title, author, year, page):
     connect = sqlite3.connect("library.db")
     cur = connect.cursor()
-    cur.execute("UPDATE bookshelf SET quantity = {}, price = {} WHERE book = {}".format(quantity, price, item))
+    cur.execute("UPDATE bookshelf SET title=?, author=?, year=?, page=? WHERE id=?",(title, author, year, page, id))
     connect.commit()
     connect.close()
-
 
 def delete(book):
     connect = sqlite3.connect("library.db")
@@ -42,3 +39,53 @@ def print_it():
     row = cur.fetchall()
     connect.close()
     return row
+
+def close():
+    pass
+
+
+def search(title, author, year, page):
+    connect = sqlite3.connect("library.db")
+    cur = connect.cursor()
+    cur.execute("SELECT * FROM bookshelf WHERE title=? OR author=? OR year=? OR page=?", (title, author, year, page))
+    row = cur.fetchall()
+    connect.close()
+    return row
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+add('Cinderella', 'Shakespear', 1998, 5)
+
+
+
+
+
+
+

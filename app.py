@@ -24,6 +24,14 @@ p = StringVar()
 p_entry = Entry(app, borderwidth=3, textvariable=p).grid(row=1,column=3, sticky=NSEW)
 
 
+
+
+
+# creating functions
+def show():
+    for row in appbackend.print_it():
+        t_lbox.insert(END, row)
+
 # creating a listbox
 t_lbox = Listbox(app, width=28).grid(padx=3, pady=5, row=2, column=0, columnspan=2, rowspan=6, sticky=NSEW)
 
@@ -32,12 +40,12 @@ svbar = Scrollbar(app, orient=VERTICAL).grid(row=2, column=2, rowspan=6, sticky=
 shbar = Scrollbar(app, orient=HORIZONTAL).grid(row=8, column=0, columnspan=3, sticky=NSEW)
 
 # configuring the listbox and scrollbar
-t_lbox.config(yscrollcommand=svbar.set, xscrollommand=shbar.set)
-svbar.config(command=t_lbox.yview)
-shbar.config(command=t_lbox.xview)
+# t_lbox.config(yscrollcommand=svbar.set, xscrollommand=shbar.set)
+# svbar.config(command=t_lbox.yview)
+# shbar.config(command=t_lbox.xview)
 
 # creating buttons
-viewb = Button(app, text='View', width=15).grid(row=2,column=3, sticky=NSEW)
+viewb = Button(app, text='View', width=15, command=show,).grid(row=2,column=3, sticky=NSEW)
 searchb = Button(app, text='Search Entry', width=15).grid(row=3,column=3, sticky=NSEW)
 addb = Button(app, text='Add Entry', width=15).grid(row=4,column=3, sticky=NSEW)
 updateb = Button(app, text='Update', width=15).grid(row=5,column=3, sticky=NSEW)

@@ -11,17 +11,17 @@ def create_table():
 create_table()
 
 
-def add(title, author, year, page):
+def add(Book_title, Author, Year, Page):
     connect = sqlite3.connect("library.db")
     cur = connect.cursor()
-    cur.execute("INSERT INTO bookshelf VALUES (NULL,?,?,?,?)", (title, author, year, page))
+    cur.execute("INSERT INTO bookshelf VALUES (NULL,?,?,?,?)", (Book_title, Author, Year, Page))
     connect.commit()
     connect.close()
 
-def update(id, title, author, year, page):
+def update(id, Book_title, Author, Year, Page):
     connect = sqlite3.connect("library.db")
     cur = connect.cursor()
-    cur.execute("UPDATE bookshelf SET title=?, author=?, year=?, page=? WHERE id=?",(title, author, year, page, id))
+    cur.execute("UPDATE bookshelf SET Book_title=?, Author=?, Year=?, Page=? WHERE id=?",(Book_title, Author, Year, Page, id))
     connect.commit()
     connect.close()
 
@@ -44,16 +44,16 @@ def close():
     pass
 
 
-def search(title, author, year, page):
+def search(Book_title="", Author="", Year="", Page=""):
     connect = sqlite3.connect("library.db")
     cur = connect.cursor()
-    cur.execute("SELECT * FROM bookshelf WHERE title=? OR author=? OR year=? OR page=?", (title, author, year, page))
+    cur.execute("SELECT * FROM bookshelf WHERE Book_title=? OR Author=? OR Year=? OR Page=?", (Book_title, Author, Year, Page))
     row = cur.fetchall()
     connect.close()
     return row
 
 
-
+search(Author="Shakespear")
 
 
 

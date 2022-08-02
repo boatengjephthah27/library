@@ -9,6 +9,15 @@ def selected_rows(event):
     global selected_row
     index = t_lbox.curselection()[0]
     selected_row = t_lbox.get(index)
+    t_entry.delete(0, END)
+    t_entry.insert(END, selected_row[1])
+    a_entry.delete(0, END)
+    a_entry.insert(END, selected_row[2])
+    y_entry.delete(0, END)
+    y_entry.insert(END, selected_row[3])
+    p_entry.delete(0, END)
+    p_entry.insert(END, selected_row[4])
+    # print(selected_row[0])
 
 def show():
     t_lbox.delete(0, END)
@@ -26,15 +35,21 @@ def add_up():
     t_lbox.insert(END, "Book added!")
 
 def update_():
-    pass
-
+    appbackend.update(selected_row[0], t.get(), a.get(), y.get(), p.get())
+    t_entry.delete(0, END)
+    a_entry.delete(0, END)
+    y_entry.delete(0, END)
+    p_entry.delete(0, END)
+    t_lbox.delete(0, END)
+    t_lbox.insert(END, "Book Updated!")
+    
 def delete_():
     appbackend.delete(selected_row[0])
     t_lbox.delete(0,END)
     t_lbox.insert(END, "Selected Book deleted!")
 
 def close_():
-    pass
+    app.quit()
 
 
 

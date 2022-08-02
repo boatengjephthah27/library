@@ -25,10 +25,10 @@ def update(id, Book_title, Author, Year, Page):
     connect.commit()
     connect.close()
 
-def delete(Book_Title):
+def delete(id):
     connect = sqlite3.connect("library.db")
     cur = connect.cursor()
-    cur.execute("DELETE FROM bookshelf WHERE Book_Title = ?", (Book_Title,))
+    cur.execute("DELETE FROM bookshelf WHERE id = ?", (id,))
     connect.commit()
     connect.close()
 

@@ -27,16 +27,18 @@ p = StringVar()
 p_entry = Entry(app, borderwidth=3, textvariable=p).grid(row=1,column=3, sticky=NSEW)
 
 # creating a listbox
-t_lbox = Listbox(app, width=28).grid(padx=3, pady=5, row=2, column=0, columnspan=2, rowspan=6, sticky=NSEW)
+t_lbox = Listbox(app, width=28)\
+t_lbox.grid(padx=3, pady=5, row=2, column=0, columnspan=2, rowspan=6, sticky=NSEW)
 
 # creating a scrollbar
-svbar = Scrollbar(app).grid(row=2, column=2, rowspan=6, sticky=NSEW)
+svbar = Scrollbar(app)\
+svbar.grid(row=2, column=2, rowspan=6, sticky=NSEW)
 # shbar = Scrollbar(app, orient=HORIZONTAL).grid(row=8, column=0, columnspan=3, sticky=NSEW)
 
 # configuring the listbox and scrollbar
-t_lbox.tix_configure(yscrollcommand=svbar.set, xscrollommand=shbar.set)
-svbar.tix_configure(command=t_lbox.yview)
-shbar.configure(command=t_lbox.xview)
+t_lbox.configure(yscrollcommand=svbar.set, xscrollommand=shbar.set)
+svbar.configure(command=t_lbox.yview)
+# shbar.configure(command=t_lbox.xview)
 
 
 # creating functions

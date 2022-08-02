@@ -34,9 +34,9 @@ svbar = Scrollbar(app).grid(row=2, column=2, rowspan=6, sticky=NSEW)
 # shbar = Scrollbar(app, orient=HORIZONTAL).grid(row=8, column=0, columnspan=3, sticky=NSEW)
 
 # configuring the listbox and scrollbar
-# t_lbox.tix_configure(yscrollcommand=svbar.set, xscrollommand=shbar.set)
-# svbar.tix_configure(command=t_lbox.yview)  
-# shbar.config(command=t_lbox.xview)
+t_lbox.tix_configure(yscrollcommand=svbar.set, xscrollommand=shbar.set)
+svbar.tix_configure(command=t_lbox.yview)
+shbar.configure(command=t_lbox.xview)
 
 
 # creating functions

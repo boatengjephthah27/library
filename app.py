@@ -55,9 +55,18 @@ def close_():
 
 # Creating the frontend interface
 app = Tk()
+app.title('My Library')
 
 # app.geometry('500x500')
-app.title('My Library')
+
+# screen_width = app.winfo_screenwidth()
+# screen_height = app.winfo_screenheight()
+# window_height = 750
+# window_width = 750
+# width_center = int(screen_width/2 - window_width/2)
+# height_center = int(screen_height/2 - window_height/2)
+# window_position = app.geometry(f"{window_width}x{window_height}+{width_center}+{height_center}")
+# app.resizable(False, False)
 
 # creating labels
 title_label = Label(app, text='Title').grid(row=0,column=0, sticky=NSEW)

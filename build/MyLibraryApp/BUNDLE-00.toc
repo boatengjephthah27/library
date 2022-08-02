@@ -1,0 +1,3 @@
+([('MyLibraryApp',
+   '/Users/mbp16/Desktop/Projects/GUIs/Tkinter/library/dist/MyLibraryApp',
+   'EXECUTABLE')],)

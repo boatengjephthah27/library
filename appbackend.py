@@ -25,10 +25,10 @@ def update(id, Book_title, Author, Year, Page):
     connect.commit()
     connect.close()
 
-def delete(book):
+def delete(Book_Title):
     connect = sqlite3.connect("library.db")
     cur = connect.cursor()
-    cur.execute("DELETE FROM bookshelf WHERE book = ?", (book,))
+    cur.execute("DELETE FROM bookshelf WHERE Book_Title = ?", (Book_Title,))
     connect.commit()
     connect.close()
 
@@ -53,7 +53,13 @@ def search(Book_title="", Author="", Year="", Page=""):
     return row
 
 
-search(Author="Shakespear")
+# add("Power of the Mind", "Pastor Chris Oyakilome", 2014, 5)
+# add("Rich Dad Poor Dad", "Robert Kiyosaki", 2011, 12)
+# add("The Rich Man in Babylon", "clement", 2018, 7)
+# add("Sleeping Beauty", "Shakespear", 2015, 15)
+# add("Snow White", "Shakespear", 2020, 32)
+
+# print(search(Page="15"))
 
 
 
@@ -80,8 +86,6 @@ search(Author="Shakespear")
 
 
 
-
-add('Cinderella', 'Shakespear', 1998, 5)
 
 
 

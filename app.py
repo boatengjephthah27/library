@@ -4,6 +4,12 @@ import appbackend
 
 
 # creating functions
+
+def selected_rows(event):
+    global selected_row
+    index = t_lbox.curselection()[0]
+    selected_row = t_lbox.get(index)
+
 def show():
     t_lbox.delete(0, END)
     for row in appbackend.print_it():
@@ -11,19 +17,24 @@ def show():
         
 def search_for():
     t_lbox.delete(0, END)
-    for row in appbackend.search(title.get(), author.get(), year.get(), page.get()):
-        t_lbox.insert(0,END)
+    for row in appbackend.search(t.get(), a.get(), y.get(), p.get()):
+        t_lbox.insert(END, row)
         
-  
+def add_up():
+    appbackend.add(t.get(), a.get(), y.get(), p.get())
+    t_lbox.delete(0, END)
+    t_lbox.insert(END, "Book added!")
 
+def update_():
+    pass
 
+def delete_():
+    appbackend.delete(selected_row[0])
+    t_lbox.delete(0,END)
+    t_lbox.insert(END, "Selected Book deleted!")
 
-
-
-
-
-
-
+def close_():
+    pass
 
 
 
@@ -63,23 +74,21 @@ t_lbox.grid(padx=3, pady=5, row=2, column=0, columnspan=2, rowspan=6, sticky=NSE
 # creating a scrollbar
 svbar = Scrollbar(app)
 svbar.grid(row=2, column=2, rowspan=6, sticky=NSEW)
-# shbar = Scrollbar(app, orient=HORIZONTAL)
-# shbar.grid(row=8, column=0, columnspan=3, sticky=NSEW)
 
 # configuring the listbox and scrollbar
 t_lbox.configure(yscrollcommand=svbar.set)
-# t_lbox.configure(xscrollommand=shbar.set)
 svbar.configure(command=t_lbox.yview)
-# shbar.configure(command=t_lbox.xview)
+t_lbox.bind('<<ListboxSelect>>', selected_rows)
+
 
 
 # creating buttons
 viewb = Button(app, text='View', width=15, command=show,).grid(row=2,column=3, sticky=NSEW)
 searchb = Button(app, text='Search Entry', width=15, command=search_for,).grid(row=3,column=3, sticky=NSEW)
-addb = Button(app, text='Add Entry', width=15).grid(row=4,column=3, sticky=NSEW)
-updateb = Button(app, text='Update', width=15).grid(row=5,column=3, sticky=NSEW)
-deleteb = Button(app, text='Delete', width=15).grid(row=6,column=3, sticky=NSEW)
-closeb = Button(app, text='Close', width=15).grid(row=7,column=3, sticky=NSEW)
+addb = Button(app, text='Add Entry', width=15, command=add_up).grid(row=4,column=3, sticky=NSEW)
+updateb = Button(app, text='Update', width=15, command=update_).grid(row=5,column=3, sticky=NSEW)
+deleteb = Button(app, text='Delete', width=15, command=delete_).grid(row=6,column=3, sticky=NSEW)
+closeb = Button(app, text='Close', width=15, command=close_).grid(row=7,column=3, sticky=NSEW)
 
 
 
